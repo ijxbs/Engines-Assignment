@@ -5,8 +5,8 @@ using UnityEngine;
 public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
-
     public float speed = 7f;
+
 
     // Update is called once per frame
     void Update()
@@ -19,6 +19,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             controller.Move(direction * speed * Time.deltaTime);
         }
+
 
     }
 }
