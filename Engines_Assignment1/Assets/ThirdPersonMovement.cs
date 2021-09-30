@@ -9,7 +9,19 @@ public class ThirdPersonMovement : MonoBehaviour
     public float grav = 9.81f;
     public float jumpSpeed = 3f;
     public float dirY;
+    public Transform spawnPoint;
 
+    void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "Lava")
+        {
+            //controller.Move(spawnPoint.position - transform.position);
+            controller.enabled = false;
+            transform.position = spawnPoint.position;
+            controller.enabled = true;
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -17,11 +29,14 @@ public class ThirdPersonMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical);
+       
 
-
-        if(Input.GetButtonDown("Jump"))
+        if (controller.isGrounded)
         {
-            dirY = jumpSpeed;
+            if (Input.GetButtonDown("Jump"))
+            {
+                dirY = jumpSpeed;
+            }
         }
 
         dirY -= grav * Time.deltaTime;
