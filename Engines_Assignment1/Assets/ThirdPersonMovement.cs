@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
+    //variables
     public CharacterController controller;
     public float speed = 7f;
     public float grav = 9.81f;
@@ -11,6 +12,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public float dirY;
     public Transform spawnPoint;
 
+    //collision detection for player to ground
     void OnTriggerEnter(Collider collision)
     {
         Debug.Log(collision.gameObject.tag);
@@ -26,11 +28,12 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //WASD movement control
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical);
        
-
+        //jump control
         if (controller.isGrounded)
         {
             if (Input.GetButtonDown("Jump"))
