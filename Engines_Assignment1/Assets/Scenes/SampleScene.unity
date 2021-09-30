@@ -510,6 +510,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2125856302}
   speed: 7
+  grav: 9.81
+  jumpSpeed: 4
+  dirY: 0
 --- !u!143 &2125856302
 CharacterController:
   m_ObjectHideFlags: 0
